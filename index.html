@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wonder AI Studio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#10111b;color:white;font-family:Arial,sans-serif;padding:20px}
+.app{max-width:600px;margin:auto}
+h1{color:#a78bfa;text-align:center}
+.sub{text-align:center;color:#bbb}
+.panel{background:#202132;padding:18px;border-radius:16px;margin-top:18px}
+label{display:block;margin:15px 0 8px}
+select,textarea,input{width:100%;padding:13px;border-radius:9px;border:1px solid #555;background:#151625;color:white;font-size:16px}
+textarea{height:110px;resize:vertical}
+button{width:100%;padding:15px;border:0;border-radius:10px;background:#8b5cf6;color:white;font-size:17px;font-weight:bold;margin-top:18px}
+button:active{opacity:.8}
+.note{color:#bbb;font-size:13px;line-height:1.5}
+#status{color:#fbbf24;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="app">
+<h1>🎬 Wonder AI Studio</h1>
+<p class="sub">Your Creative AI Video Generator</p>
+
+<div class="panel">
+<h2>✨ Create Your Video</h2>
+
+<label>Video Generation Mode</label>
+<select id="mode">
+<option>Text to Video</option>
+<option>Image to Video</option>
+</select>
+
+<label>Enter Your Video Prompt</label>
+<textarea id="prompt" placeholder="Describe your video scene..."></textarea>
+
+<label>Upload Image (for Image to Video)</label>
+<input type="file" id="image" accept="image/*">
+
+<label>Video Quality</label>
+<select id="quality">
+<option>720p HD</option>
+</select>
+
+<label>Aspect Ratio</label>
+<select id="ratio">
+<option>9:16 - YouTube Shorts</option>
+<option>16:9 - YouTube Long Video</option>
+</select>
+
+<label>Video Duration</label>
+<select id="duration">
+<option>5 Seconds</option>
+<option>10 Seconds</option>
+</select>
+
+<button onclick="generate()">Generate Video</button>
+<p id="status"></p>
+<p class="note">Free and open-source AI model integration will be connected in the next development phase. Video generation is not connected yet.</p>
+</div>
+</div>
+
+<script>
+function generate(){
+ const prompt=document.getElementById('prompt').value.trim();
+ const mode=document.getElementById('mode').value;
+ const image=document.getElementById('image').files[0];
+ if(!prompt){alert('Please enter a video prompt');return;}
+ if(mode==='Image to Video'&&!image){
+ alert('Please upload an image');return;
+ }
+ document.getElementById('status').textContent=
+ 'Your settings are ready! AI video generation backend is not connected yet.';
+}
+</script>
+</body>
+</html>
